@@ -1,0 +1,18 @@
+<?php
+if(!empty($_POST)) {
+
+    require('../app/ConnexionBDD.php');
+
+    $id = $_POST['id'];
+    $resume = $_POST['resume'];
+    $details = $_POST['details'];
+    $statut = $_POST['statut'];
+    $typeID = $_POST['type'];
+    $dureePrev = $_POST['estimate_time'];
+
+    echo "id = " . $id . " resume" . $resume . "details " . $details . "statut " . $statut . "type " . $typeID . " dure " . $dureePrev;
+
+    $req = $db->prepare('UPDATE activite SET dureePrevue = ?,resume = ?,detail = ?   , IDType = ? WHERE ID = ?');
+
+    $req->execute([$dureePrev,$resume,$details,$typeID,$id]);
+}

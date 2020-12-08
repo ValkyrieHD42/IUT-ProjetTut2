@@ -1,0 +1,34 @@
+<?php
+
+require('/../Metier/Activity.php');
+require('/../Metier/User.php');
+require('/../Metier/Project.php');
+
+class ActivityDAO
+{
+    private $_db;
+
+    /**
+     * ActivityDAO constructor.
+     * @param $db
+     */
+    public function __construct($db) {
+        $this->_db = $db;
+    }
+
+    /**
+     * @param Project $p
+     * @param User $user
+     * return //Activity
+     */
+    public function ReadActivities(Project $p, User $user){
+
+    }
+
+    /**
+     * @param Activity $a
+     */
+    public function Update(Activity $a){
+
+    }
+}

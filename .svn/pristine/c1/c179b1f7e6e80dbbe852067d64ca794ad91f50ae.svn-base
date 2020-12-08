@@ -1,0 +1,36 @@
+<?php
+
+
+class MainWindow
+{
+    /**
+     * MainWindow constructor.
+     */
+    public function __construct()
+    {
+        include('inc/header.php');
+
+
+        echo'<p>Accueil</p>';
+    }
+
+    public function GotoDetails(){
+
+    }
+
+    public function Connect(){
+
+    }
+
+    public function Disconnect(){
+
+    }
+
+    public function  Profile(){
+
+    }
+
+
+
+}
+?>

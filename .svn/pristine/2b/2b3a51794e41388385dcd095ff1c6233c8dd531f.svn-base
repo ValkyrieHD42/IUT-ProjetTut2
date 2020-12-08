@@ -1,0 +1,68 @@
+<?php
+
+require('Activity.php');
+require('User.php');
+require('Project.php');
+
+class ActivityDAO
+{
+    private $_db;
+
+    /**
+     * ActivityDAO constructor.
+     * @param $db
+     */
+    public function __construct($db) {
+        $this->_db = $db;
+    }
+
+    /**
+     * Afiche les activitée d'un utilisateur et ses projets
+     * @param Project $p
+     * @param User $user
+     * return //Activity
+     */
+    public function ReadActivities(Project $p, User $user){
+        /*
+               //Si Technicien , voit que les activitée sur les quels il travail
+               //Si comercial ou clientvoit toute les activitée du projet
+
+               //$req1 = $this->_db->querry('Select ');
+
+
+               if ($user->type_utilisateur() == 'technicien')
+                {
+
+                } */
+
+
+
+    }
+
+    /**Demande que la classe Activity ait été modifié avant dans métier
+     * @param Activity $a
+     */
+    public function Update(Activity $a){
+
+        $req = $this->_db->prepare('UPDATE
+                                SET dateDébut = ?, dateFin = ? , duréePrévue = ? , 
+                                détail = ? , IDType = ?, résumé = ?, statut = ?
+                                WHERE ID = "? " ');
+
+        $durée = (string) $a->getDuration();
+        $début = (string) $a->getStart();
+        $fin = (string) $a->getEnd();
+        $détail = (string) $a->getDetails();
+        $idType = (string) $a->getKind();
+        $summary = (string) $a->getSummary();
+        $statut =(string) $a->getState();
+
+
+        $id = (string) $a->getId();
+
+        $req->execute([$début,$fin,$durée,$détail,$idType,$summary,$statut,$id]);
+
+    }
+
+
+}

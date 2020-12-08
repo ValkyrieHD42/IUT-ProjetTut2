@@ -1,0 +1,39 @@
+<?php
+
+
+class MainWindow
+{
+    /**
+     * MainWindow constructor.
+     */
+    public function __construct()
+    {
+        ob_start();
+        include('Project.php');
+    }
+
+    public function Profile() {
+
+    }
+
+    public function GotoDetails() {
+        require('ActivitiesWindow.php');
+    }
+
+
+    public function Connect(){
+
+    }
+
+    public function Disconnect(){
+
+    }
+
+    public function  Profile(){
+
+    }
+
+
+
+}
+?>

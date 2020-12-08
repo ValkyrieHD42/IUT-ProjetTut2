@@ -1,0 +1,35 @@
+<?php
+
+
+class MainWindow
+{
+    /**
+     * MainWindow constructor.
+     */
+    public function __construct()
+    {
+        include('inc/header.php');
+        include('inc/index.php');
+    }
+
+    public function Profile()
+    {
+
+    }
+
+    public function GotoDetails()
+    {
+        require('ActivitiesWindow.php');
+    }
+
+
+    public function Connect()
+    {
+
+    }
+
+    public function Disconnect()
+    {
+
+    }
+}

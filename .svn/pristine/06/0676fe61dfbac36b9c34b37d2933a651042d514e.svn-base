@@ -1,0 +1,41 @@
+<?php
+
+require ('/../Metier/User');
+
+class BadPasswordError
+{
+
+    private $_db;
+
+    /**
+     * BadPasswordError constructor.
+     * @param $db
+     */
+    public function __construct($db) {
+        $this->_db = $db;
+    }
+
+    /**
+     * @param User $user
+     * @param $psw mot de passe rentré par l'utilisateur lors du login
+     */
+    public function checkPassword(User $user, $psw){
+
+        $id = $user->id();
+
+        $req1 = $this->_db->query('Select password from utilsateur 
+                                    where id = " '. $id .' "');
+
+        $realpsw = $req1->fetch(),
+
+        if ($realpsw != $psw)
+        {
+            echo "Mauvais mot de passe !! ";
+        }
+
+
+
+
+
+    }
+}

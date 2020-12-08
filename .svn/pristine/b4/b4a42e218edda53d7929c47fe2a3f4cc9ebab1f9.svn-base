@@ -1,0 +1,31 @@
+<?php
+
+//require('Activity.php');
+require('User.php');
+require('Project.php');
+
+class ActivitiesWindows
+{
+    /**
+     * ActivitiesWindows constructor.
+     * @param Project $p
+     * @param User $user
+     */
+    public function __construct(Project $p, User $user)
+    {
+        include('inc/header.php');
+
+
+        echo'<p>Activitées</p>';
+    }
+
+    public function ChooseActivity(){
+
+    }
+
+
+
+
+
+}
+?>

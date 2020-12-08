@@ -1,0 +1,58 @@
+<?php include('inc/header.php')?>
+
+<?php
+
+/*require('../app/ActivityDAO.php');
+require('../app/Activity.php');
+
+$a = new ActivityDAO(); //pour récupérer les activié et afficher les info.
+
+$a1= new Activity();
+$a1 = $a->ReadActivities(); // L'activité est mise a jour par rapport à la bd */
+
+echo '
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Activités</h1>
+                    <hr>
+                    <div class="table-responsive m-b-40">
+                        <table class="table table-borderless table-data3">
+                            <thead>
+                            <tr>
+                                <th>Résumé</th>
+                                <th>Détails</th>
+                                <th>Statut</th>
+                                <th>Type</th>
+                                <th>Durée prévue</th>
+                                <th>Technicien</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>La le résumé hého</td>
+                                <td>Ceci est un détail</td>
+                                <td><span class="btn btn-outline-warning active">En cours</span></td>
+                                <td>maintenance</td>
+                                <td>50</td>
+                                <td>Jean Daniel</td>
+                                <td>
+                                    <button type="button" class="btn btn-primary m-l-10 m-b-10" onclick="self.location.href=\'EditActivity.php\'">Edit <i class="zmdi zmdi-edit"></i></button> <!-- bien penser a relier a bad ActivityState -->
+                                    <button type="button" class="btn btn-danger m-l10 m-b-10">Delete <i class="zmdi zmdi-delete"></i> </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+'
+?>
+

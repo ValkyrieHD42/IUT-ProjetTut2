@@ -1,0 +1,15 @@
+<?php
+
+
+class Commercial
+{
+    private $id;
+    private $nom;
+    private $prenom;
+    private $pourcentage;
+
+    public function __construct()
+    {
+        $this->id=
+    }
+}

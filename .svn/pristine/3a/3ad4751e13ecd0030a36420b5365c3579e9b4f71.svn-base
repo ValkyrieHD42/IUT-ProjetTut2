@@ -1,0 +1,41 @@
+<?php
+include('inc/header.php');
+?>
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Projets</h1>
+                    <hr>
+                    <div class="table-responsive m-b-40">
+                        <table class="table table-borderless table-data3">
+                            <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Durée estimée</th>
+                                    <th>Durée finale</th>
+                                    <th>Statut</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    require('../app/ProjectDAO.php');
+                                    $p = new ProjectDAO();
+                                    $projects = $p->readProjects($_SESSION['utilisateurId']);
+                                    foreach ($projects as $element) {
+                                        $projectId = "/ActivitiesWindow/?project=" . $element['ID'];
+                                        echo '<tr><td>' . $element['nom'] . '</td><td>' . $element['dureeEstimee'] . '</td><td>' . $element['dureeFinale'] . '</td><td>' . $element['statut'] . '</td><td><a href="ActivitiesWindow.php?project=' . $element['ID'] . '"><button type="button" class="btn btn-success m-l-10 m-b-10">Details </button></a></td></tr>';
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<?php include('inc/footer.php'); ?>

@@ -1,0 +1,215 @@
+<?php
+
+
+class Activity
+{
+    private $id;
+    private $state = PLANNED;
+    private $summary;
+    private $start;
+    private $end;
+    private $duration;
+    private $probableEnd;
+    private $name;
+    private $kind;
+    private $details;
+
+    public function __construct($id,$name,$summary,$state) {
+        $this.$id = $id;
+        $this.$name = $name;
+        $this.$summary = $summary;
+        $this.$state = $state;
+    }
+
+    /**
+     * Demande un démarrage de l'activité
+     */
+    public function startActivity() {
+
+    }
+
+    /**
+     * Demande à terminer l'activité
+     */
+    public function finish() {
+
+    }
+
+    /**
+     * Demande l'annulation
+     */
+    public function cancel() {
+
+    }
+
+    /**
+     * Annule une annulation
+     */
+    public function unCancel() {
+
+    }
+
+    // GETTERS AND SETTERS
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param mixed $state
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSummary()
+    {
+        return $this->summary;
+    }
+
+    /**
+     * @param mixed $summary
+     */
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStart()
+    {
+        return $this->start;
+    }
+
+    /**
+     * @param mixed $start
+     */
+    public function setStart($start)
+    {
+        $this->start = $start;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEnd()
+    {
+        return $this->end;
+    }
+
+    /**
+     * @param mixed $end
+     */
+    public function setEnd($end)
+    {
+        $this->end = $end;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
+    /**
+     * @param mixed $duration
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProbableEnd()
+    {
+        return $this->probableEnd;
+    }
+
+    /**
+     * @param mixed $probableEnd
+     */
+    public function setProbableEnd($probableEnd)
+    {
+        $this->probableEnd = $probableEnd;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getKind()
+    {
+        return $this->kind;
+    }
+
+    /**
+     * @param mixed $kind
+     */
+    public function setKind($kind)
+    {
+        $this->kind = $kind;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDetails()
+    {
+        return $this->details;
+    }
+
+    /**
+     * @param mixed $details
+     */
+    public function setDetails($details)
+    {
+        $this->details = $details;
+    }
+
+
+}

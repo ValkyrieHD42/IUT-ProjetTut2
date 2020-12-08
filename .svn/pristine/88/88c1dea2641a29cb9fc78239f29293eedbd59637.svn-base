@@ -1,0 +1,13 @@
+<?php
+
+
+class ActivitiesWindow
+{
+    public function __construct()
+    {
+
+    }
+
+    
+
+}

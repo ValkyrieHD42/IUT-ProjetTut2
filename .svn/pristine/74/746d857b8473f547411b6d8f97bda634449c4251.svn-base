@@ -1,0 +1,14 @@
+<?php
+/**
+ * Classe Enumération des états possible d'une activitée.
+ */
+require('Activity.php');
+
+class ActivityState extends Enum
+{
+    const PREVUE = 'PREVUE';
+ const ENCOURS = 'ENCOURS';
+ const TERMINEE = 'TERMINEE';
+ const ANNULE = 'ANNULE';
+// ...
+}

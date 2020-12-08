@@ -1,0 +1,251 @@
+<?php
+
+class Activity
+
+{
+    private $id;
+    private $state;
+    private $summary;
+    private $start;
+    private $end;
+    private $duration;
+    private $probableEnd;
+    private $name;
+    private $kind;
+    private $details;
+
+    public function __construct($id,$details,$summary,$state) {
+        $this.$id = $id;
+        $this.$details = $details;
+        $this.$summary = $summary;
+        $this.$state = $state;
+    }
+
+    /**
+     * Demande un démarrage de l'activité
+     */
+    public function startActivity() {
+
+            if($this->getState()==ActivityState::PREVUE) {
+                $this->setStart(date('H:i'));
+                (new ActivityDAO)->Update($this);
+
+            }
+    }
+
+    /**
+     * Demande à terminer l'activité
+     */
+    public function finish() {
+
+            if($this->getState()==ActivityState::ENCOURS) {
+                $this->setEnd(date('d/m/Y'));
+                (new ActivityDAO)->Update($this);
+
+            }
+    }
+
+
+    /**
+     * Demande l'annulation
+     */
+    public function cancel() {
+        if($this->getState()!=ActivityState::TERMINEE) {
+            (new ActivityDAO)->Update($this);
+
+        }    }
+
+    /**
+     * Annule une annulation
+     */
+    public function unCancel() {
+        if($this->getState()==ActivityState::ANNULE) {
+            $this->setStart(null);
+            (new ActivityDAO)->Update($this);
+        }
+    }
+
+    // GETTERS AND SETTERS
+
+    /**
+     * getter de l'attribut Id
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * * setter de l'attribut Id
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * getter de l'attribut state
+     * @return mixed
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * setter de l'attribut state
+     * @param mixed $state
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+    }
+
+    /**
+     * getter de l'attribut summary
+     * @return mixed
+     */
+    public function getSummary()
+    {
+        return $this->summary;
+    }
+
+    /**
+     * setter de l'attribut summary
+     * @param mixed $summary
+     */
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
+    }
+
+    /**
+     * getter de l'attribut start
+     * @return mixed
+     */
+    public function getStart()
+    {
+        return $this->start;
+    }
+
+    /**
+     * setter de l'attribut start
+     * @param mixed $start
+     */
+    public function setStart($start)
+    {
+        $this->start = $start;
+    }
+
+    /**
+     * getter de l'attribut end
+     * @return mixed
+     */
+    public function getEnd()
+    {
+        return $this->end;
+    }
+
+    /**
+     * setter de l'attribut end
+     * @param mixed $end
+     */
+    public function setEnd($end)
+    {
+        $this->end = $end;
+    }
+
+    /**
+     * getter de l'attribut duration
+     * @return mixed
+     */
+    public function getDuration()
+    {
+        return $this->duration;
+    }
+
+    /**
+     * setter de l'attribut duration
+     * @param mixed $duration
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+    }
+
+    /**
+     * getter de l'attribut probableEnd
+     * @return mixed
+     */
+    public function getProbableEnd()
+    {
+        return $this->probableEnd;
+    }
+
+    /**
+     * setter de l'attribut probableEnd
+     * @param mixed $probableEnd
+     */
+    public function setProbableEnd($probableEnd)
+    {
+        $this->probableEnd = $probableEnd;
+    }
+
+    /**
+     * getter de l'attribut name
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * setter de l'attribut name
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * getter de l'atribut kind
+     * @return mixed
+     */
+    public function getKind()
+    {
+        return $this->kind;
+    }
+
+    /**
+     * setter de l'attribut kind
+     * @param mixed $kind
+     */
+    public function setKind($kind)
+    {
+        $this->kind = $kind;
+    }
+
+    /**
+     * getter de l'attribut details
+     * @return mixed
+     */
+    public function getDetails()
+    {
+        return $this->details;
+    }
+
+    /**
+     * setter de l'attribut details
+     * @param mixed $details
+     */
+    public function setDetails($details)
+    {
+        $this->details = $details;
+    }
+
+
+}

@@ -1,0 +1,18 @@
+<?php
+
+
+class BadUserError
+{
+
+    private $_db;
+
+    /**
+     * BadUserError constructor.
+     * @param $db
+     */
+    public function __construct($db) {
+        $this->_db = $db;
+    }
+}
+
+?>

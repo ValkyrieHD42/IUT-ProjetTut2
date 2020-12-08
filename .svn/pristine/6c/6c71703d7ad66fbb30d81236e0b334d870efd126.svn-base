@@ -1,0 +1,4 @@
+<?php
+require('MainWindow.php');
+
+$main = new MainWindow();

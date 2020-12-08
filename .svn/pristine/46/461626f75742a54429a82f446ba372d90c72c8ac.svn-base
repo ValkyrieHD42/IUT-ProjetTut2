@@ -1,0 +1,102 @@
+<?php include('inc/header.php');
+
+require('../app/ActivityDAO.php');
+require('../app/Activity.php');
+
+
+$a = new ActivityDAO();
+
+$a1= new Activity();
+$a1 = $a->ReadActivities();
+
+//echo $a.getSummary();
+
+echo '<h1></h1>
+<hr>
+<div class="col-lg-6">
+<div class="card">
+    <div class="card-header">
+        <strong>Edition de projet</strong>
+    </div>
+    <div class="card-body card-block">
+        <form action="" method="post" class="form-horizontal">
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="resume" class="form-control-label">Résumé</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <input type="text" id="resume" name="resume" placeholder="Résumé" value=" ' . $a1->getSummary() .' " class="form-control">
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="details" class="form-control-label">Détails</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <input type="text" id="details" name="details" placeholder="Détails" value="La le résumé hého" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="commercial" class="form-control-label">Statut</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <select name="statut" id="statut" class="form-control">
+                        <option value="0">En cours</option>
+                        <option value="1">Fini</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="type" class="form-control-label">Type</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <select name="type" id="type" class="form-control">
+                        <option value="0">Développement</option>
+                        <option value="1">Déploiement</option>
+                        <option value="2">Maintenance</option>
+                        <option value="3">Solution innovante</option>
+                        <option value="4">Migration</option>
+                        <option value="5">Service après vente</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="estimate_time" class="form-control-label">Durée Prévue</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <input type="text" id="estimate_time" name="estimate_time" placeholder="Durée Prévue" value="50" class="form-control">
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col col-md-3">
+                    <label for="technicien" class="form-control-label">Type</label>
+                </div>
+                <div class="col-12 col-md-9">
+                    <select name="technicien" id="technicien" class="form-control">
+                        <option value="0">Michel</option>
+                        <option value="1">Jean</option>
+                        <option value="2">Didier</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-sm" onclick="self.location.href=\"ActivityWindows.php\">
+            <i class="fa fa-dot-circle-o"></i>Valider
+        </button>
+        <button type="reset" class="btn btn-danger btn-sm">
+            <i class="fa fa-ban"></i> Annuler
+        </button>
+    </div>
+</div>';
+
+
+include('inc/footer.php');
+?>
+
+
+

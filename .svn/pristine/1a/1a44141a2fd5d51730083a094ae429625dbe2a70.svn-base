@@ -1,0 +1,63 @@
+<?php
+
+require('User.php');
+
+class ActivityDAO
+{
+    private $_db;
+
+    /**
+     * ActivityDAO constructor.
+     * @param $db
+     */
+    public function __construct() {
+        $this->_db = new PDO('mysql:host=localhost; dbname=mydb', 'root', '',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+
+    }
+
+    /**
+     * Afiche les activitée d'un utilisateur et ses projets
+     * @param Project $p
+     * @param User $user
+     * return //Activity
+     */
+    public function ReadActivities(int $projectID,int $userID){
+        $req = $this->_db->prepare('SELECT id FROM technicien WHERE UTILISATEUR_ID = ?');
+        $req->execute([$userID]);
+        $id = $req->fetch(); // $id sous forme de tableau avec ['id']
+
+
+        $req2 = $this->_db->prepare('SELECT * FROM activite WHERE ID IN (SELECT activiteID FROM compose NATURAL JOIN affect WHERE projetID = ? AND technicienID = ?)');
+        $req2->execute([$projectID,$id['id']]);
+        $donnes = $req2->fetchAll();
+
+        return $donnes;
+    }
+
+    /**Demande que la classe Activity ait été modifié avant dans métier
+     * @param Activity $a
+     */
+    public function Update(Activity $a){
+
+        $req = $this->_db->prepare('UPDATE
+                                SET dateDébut = ?, dateFin = ? , duréePrévue = ? , 
+                                détail = ? , IDType = ?, résumé = ?, statut = ?
+                                WHERE ID = "? " ');
+
+        $durée = (string) $a->getDuration();
+        $début = (string) $a->getStart();
+        $fin = (string) $a->getEnd();
+        $détail = (string) $a->getDetails();
+        $idType = (string) $a->getKind();
+        $summary = (string) $a->getSummary();
+        $statut =(string) $a->getState();
+
+
+        $id = (string) $a->getId();
+
+        $req->execute([$début,$fin,$durée,$détail,$idType,$summary,$statut,$id]);
+
+    }
+
+
+}

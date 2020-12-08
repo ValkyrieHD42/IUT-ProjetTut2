@@ -1,0 +1,12 @@
+<?php
+
+//$pageProfil = new ProfileWindow();
+
+echo
+'<html>
+<body>
+<p>
+OUI
+</p>
+</body>
+</html>' ;

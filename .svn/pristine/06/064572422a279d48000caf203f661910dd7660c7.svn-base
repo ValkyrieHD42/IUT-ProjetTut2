@@ -1,0 +1,16 @@
+<?php
+
+require('/../Metier/Project.php');
+
+class ProjectDAO
+{
+    private $_db;
+
+    /**
+     * ProjectDAO constructor.
+     * @param $db
+     */
+    public function __construct($db) {
+        $this->_db = $db;
+    }
+}

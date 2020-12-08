@@ -1,0 +1,31 @@
+<?php
+
+class ProjectDAO
+{
+    private $_db;
+
+    /**
+     * ProjectDAO constructor.
+     */
+    public function __construct() {
+        $db = new PDO('mysql:host=localhost; dbname=mydb', 'root', 'root',array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+        $this->_db = $db;
+    }
+
+    public function readProjects($userId) {
+        // Réucupération de l'ID commercial /!\ Temporaire
+        $req = $this->_db->prepare('SELECT id FROM commercial WHERE UTILISATEUR_ID = ?');
+        $req->execute([$userId]);
+        $id = $req->fetch(); // $id sous forme de tableau avec ['id']
+
+        // Récupération des projets avec id
+        $req2 = $this->_db->prepare('SELECT * FROM projet WHERE commercialID = ?'); //nom, duréeEstimée, duréeFinale, statut
+        $req2->execute([$id['id']]);
+        $donnes = $req2->fetchAll();
+
+
+        return $donnes;
+    }
+}
+
+?>

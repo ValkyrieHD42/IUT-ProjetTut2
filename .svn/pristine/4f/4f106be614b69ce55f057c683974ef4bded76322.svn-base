@@ -1,0 +1,14 @@
+<?php
+
+
+class UserDAO
+{
+    private $id;
+    private $login;
+    private $password;
+    private $type_utilisateur;
+
+}
+
+
+?>

@@ -1,0 +1,78 @@
+<?php
+
+
+class ActivityWindow
+{
+    public function __construct($activity)
+    {
+        readfile('EditActivity.php');
+    }
+}
+
+require('Activity.php');
+
+
+class ActivityWindow
+{
+
+    private $a;
+
+    /**
+     * ActivityWindow constructor.
+     * @param Activity $a
+     */
+    public function __construct(Activity $a)
+    {
+        include('inc/header.php');
+
+        $this->a = $a;
+
+
+        echo'<p>Activitées</p>';
+    }
+
+    public function SetStarted(){
+        require_once('../app/ConnexionBDD.php');
+
+        $activityDao = new ActivityDAO(db);
+
+        $this->a->setState("En cours");
+        $activityDao->Update($this->a);
+
+    }
+
+    public function setPlanned(){
+        require_once('../app/ConnexionBDD.php');
+
+        $activityDao = new ActivityDAO(db);
+
+        $this->a->setState("Planifiée");
+        $activityDao->Update($this->a);
+
+    }
+
+    public function  setCanceled(){
+        require_once('../app/ConnexionBDD.php');
+
+        $activityDao = new ActivityDAO(db);
+
+        $this->a->setState("Annulée");
+        $activityDao->Update($this->a);
+
+    }
+    public function setFinished(){
+        require_once('../app/ConnexionBDD.php');
+
+        $activityDao = new ActivityDAO(db);
+
+        $this->a->setState("Fini");
+        $activityDao->Update($this->a);
+
+    }
+
+
+
+
+
+}
+?>

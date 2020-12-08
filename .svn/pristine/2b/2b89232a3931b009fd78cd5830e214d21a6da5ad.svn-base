@@ -1,0 +1,15 @@
+<?php
+
+
+class MainWindow
+{
+    public function __construct()
+    {
+        include('inc/header.php');
+
+
+        echo'<p>Accueil</p>';
+    }
+
+    //public function
+}

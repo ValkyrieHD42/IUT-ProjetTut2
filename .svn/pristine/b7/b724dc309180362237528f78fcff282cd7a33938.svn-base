@@ -1,0 +1,16 @@
+<?php
+
+
+class BadPasswordError
+{
+
+    private $_db;
+
+    /**
+     * BadPasswordError constructor.
+     * @param $db
+     */
+    public function __construct($db) {
+        $this->_db = $db;
+    }
+}

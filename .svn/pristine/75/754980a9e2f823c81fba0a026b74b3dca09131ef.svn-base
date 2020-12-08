@@ -1,0 +1,14 @@
+<?php
+
+
+class ActivitiesWindow
+{
+    public function __construct($project, $user)
+    {
+        readfile("Activity.php");
+    }
+
+    public function ChooseActivity() {
+        readfile("ActivityEdit.php");
+    }
+}

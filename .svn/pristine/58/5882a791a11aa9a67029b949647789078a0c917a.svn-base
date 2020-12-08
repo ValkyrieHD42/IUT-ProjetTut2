@@ -1,0 +1,242 @@
+<?php
+    if(isset($_GET['activities'])) {
+        require 'ActivitiesWindow.php';
+        $activitiesWindow = new ActivitiesWindow(12,23);
+
+    }
+    if(!isset($_SESSION)) {
+        session_start();
+        if(!isset($_SESSION)) {
+            header('Location: Connexion.php');
+        }
+    }
+if(!isset($_SESSION['type_utilisateur'])) {
+    header('Location: Connexion.php');
+}
+?>
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+
+    <!-- Title Page-->
+    <title>Dashboard</title>
+
+    <!-- Fontfaces CSS-->
+    <link href="../public/css/font-face.css" rel="stylesheet" media="all">
+    <link href="../public/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="../public/vendor/font-awesome-5/css/fontawesome-all.min.css" rel="stylesheet" media="all">
+    <link href="../public/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+
+    <!-- Bootstrap CSS-->
+    <link href="../public/vendor/bootstrap-4.1/bootstrap.min.css" rel="stylesheet" media="all">
+
+    <!-- Vendor CSS-->
+    <link href="../public/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet" media="all">
+    <link href="../public/vendor/wow/animate.css" rel="stylesheet" media="all">
+    <link href="../public/vendor/css-hamburgers/hamburgers.min.css" rel="stylesheet" media="all">
+    <link href="../public/vendor/slick/slick.css" rel="stylesheet" media="all">
+    <link href="../public/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="../public/vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="../public/css/theme.css" rel="stylesheet" media="all">
+
+</head>
+
+<body class="animsition">
+<div class="page-wrapper">
+    <!-- HEADER MOBILE-->
+    <header class="header-mobile d-block d-lg-none">
+        <div class="header-mobile__bar">
+            <div class="container-fluid">
+                <div class="header-mobile-inner">
+                    <a class="logo" href="index.php">
+                        <h1>Projet S2</h1>
+                    </a>
+                    <button class="hamburger hamburger--slider" type="button">
+                            <span class="hamburger-box">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar-mobile">
+            <div class="container-fluid">
+                <ul class="navbar-mobile__list list-unstyled">
+                    <li class="active">
+                        <a href="#">
+                            <i class="fas fa-book"></i>Accueil</a>
+                    </li>
+                    <li>
+                        <a href="Project.php">
+                            <i class="fas fa-archive"></i>Projets</a> <!-- Client / Chef de projet / technicien / Commercial -->
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- END HEADER MOBILE-->
+
+    <!-- MENU SIDEBAR-->
+    <aside class="menu-sidebar d-none d-lg-block">
+        <div class="logo">
+            <a href="#">
+                <h1 style="color=#666">Projet S2</h1>
+            </a>
+        </div>
+        <div class="menu-sidebar__content js-scrollbar1">
+            <nav class="navbar-sidebar">
+                <ul class="list-unstyled navbar__list">
+                    <li      class="active">
+                        <a href="index.php">
+                            <i class="fas fa-book"></i>Accueil</a>
+                    </li>
+                    <?php if($_SESSION['type_utilisateur'] == 'commercial'): ?>
+                    <li>
+                        <a href="Project.php">
+                            <i class="fas fa-archive"></i>Projets</a> <!-- Client / Chef de projet / technicien / Commercial -->
+                    </li>
+                    <?php endif ?>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-users"></i>Techniciens</a> <!-- Chef de projet /  -->
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-bar-chart-o"></i>Statistiques</a> <!-- Chef de projet /  -->
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-users"></i>Clients</a> <!-- Commercial /  -->
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-print"></i>Devis</a> <!-- Commercial / Client  -->
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <!-- END MENU SIDEBAR-->
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- MAIN CONTENT-->
+        <header class="header-desktop">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <div class="header-wrap float-right">
+                        <div class="header-button">
+                            <div class="noti-wrap">
+                                <div id="notif" class="noti__item js-item-menu">
+                                    <i class="zmdi zmdi-notifications"></i>
+                                    <span class="quantity">3</span>
+                                    <div class="notifi-dropdown js-dropdown">
+                                        <div class="notifi__title">
+                                            <p>You have 3 Notifications</p>
+                                        </div>
+                                        <div class="notifi__item">
+                                            <div class="bg-c1 img-cir img-40">
+                                                <i class="zmdi zmdi-email-open"></i>
+                                            </div>
+                                            <div class="content">
+                                                <p>You got a email notification</p>
+                                                <span class="date">April 12, 2018 06:50</span>
+                                            </div>
+                                        </div>
+                                        <div class="notifi__item">
+                                            <div class="bg-c2 img-cir img-40">
+                                                <i class="zmdi zmdi-account-box"></i>
+                                            </div>
+                                            <div class="content">
+                                                <p>Your account has been blocked</p>
+                                                <span class="date">April 12, 2018 06:50</span>
+                                            </div>
+                                        </div>
+                                        <div class="notifi__item">
+                                            <div class="bg-c3 img-cir img-40">
+                                                <i class="zmdi zmdi-file-text"></i>
+                                            </div>
+                                            <div class="content">
+                                                <p>You got a new file</p>
+                                                <span class="date">April 12, 2018 06:50</span>
+                                            </div>
+                                        </div>
+                                        <div class="notifi__footer">
+                                            <a href="#">All notifications</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="account-wrap">
+                                <div id="rightmenu" class="account-item clearfix js-item-menu">
+                                    <div class="image">
+                                        <img src="../public/images/img_258083.png" alt="John Doe">
+                                    </div>
+                                    <div class="content">
+                                        <a id="dropdown-popup" class="js-acc-btn" href="#"><?php echo $_SESSION['login']?></a>
+                                    </div>
+                                    <div class="account-dropdown js-dropdown">
+                                        <div class="info clearfix">
+                                            <div class="image">
+                                                <a href="#">
+                                                    <img src="../public/images/img_258083.png" alt="John Doe">
+                                                </a>
+                                            </div>
+                                            <div class="content">
+                                                <h5 class="name">
+                                                    <a href="#"><?php echo $_SESSION['login']?></a>
+                                                </h5>
+                                                <span class="email">Your email here</span>
+                                            </div>
+                                        </div>
+                                        <div class="account-dropdown__body">
+                                            <div class="account-dropdown__item">
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-account"></i>Compte</a>
+                                            </div>
+                                            <div class="account-dropdown__item">
+                                                <a href="#">
+                                                    <i class="zmdi zmdi-settings"></i>Paramètre</a>
+                                            </div>
+                                        </div>
+                                        <div class="account-dropdown__footer">
+                                            <a href="logout.php">
+                                                <i class="zmdi zmdi-power"></i>Se déconnecter</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <script>
+                                var dropdown = document.getElementById('dropdown-popup');
+                                dropdown.addEventListener('click', OpenRightMenu);
+
+                                var notifmenu = document.getElementById('notif');
+                                notifmenu.addEventListener('click', OpenNotifMenu);
+
+                                function OpenRightMenu() {
+                                    var menu = document.getElementById('rightmenu');
+                                    if(menu.className == "account-item clearfix js-item-menu show-dropdown") {
+                                        menu.className = "account-item clearfix js-item-menu";
+                                    } else {
+                                        menu.className = "account-item clearfix js-item-menu show-dropdown";
+                                    }
+                                }
+
+                                function OpenNotifMenu() {
+                                    var menu = document.getElementById('notif');
+                                    if(menu.className == "noti__item js-item-menu show-dropdown") {
+                                        menu.className = "noti__item js-item-menu";
+                                    } else {
+                                        menu.className = "noti__item js-item-menu show-dropdown";
+                                    }
+                                }
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">

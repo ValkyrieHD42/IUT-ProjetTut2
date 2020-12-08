@@ -1,0 +1,53 @@
+<?php
+
+
+class Activity
+{
+    private $id;
+    private $state;
+    private $summary;
+    private $start;
+    private $end;
+    private $duration;
+    private $probableEnd;
+    private $name;
+    private $kind;
+    private $details;
+
+    public function __construct($id,$name,$summary,$state) {
+        $this.$id = $id;
+        $this.$name = $name;
+        $this.$summary = $summary;
+        $this.$state = $state;
+    }
+
+    /**
+     * Demande un démarrage de l'activité
+     */
+    public function startActivity() {
+
+    }
+
+    /**
+     * Demande à terminer l'activité
+     */
+    public function finish() {
+
+    }
+
+    /**
+     * Demande l'annulation
+     */
+    public function cancel() {
+
+    }
+
+    /**
+     * Annule une annulation
+     */
+    public function unCancel() {
+
+    }
+
+
+}

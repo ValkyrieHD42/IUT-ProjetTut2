@@ -1,0 +1,31 @@
+<?php
+if(!empty($_POST)) {
+
+    require('../app/ConnexionBDD.php');
+    require('../app/User.php');
+
+    $login = $_POST['login'];
+    $newLogin = $_POST['newLogin'];
+    $newPassword = $_POST['newPassword'];
+
+    $req = $db->query('SELECT * FROM UTILISATEUR WHERE LOGIN = "' . $login . '"');
+    $donnes = $req->fetch();
+    $type = $donnes['TYPE_UTILISATEUR'];
+
+    $u = new User($donnes);
+
+    $id = $u->id();
+    $password = password_hash($newPassword, PASSWORD_BCRYPT);
+
+    $req = $db->prepare('UPDATE utilisateur SET LOGIN = ?,PASSWORD = ? WHERE ID = ?');
+    try {
+        $req->execute([$newLogin,$password,$id]);
+    }
+    catch (PDOException $exception) {
+        echo $exception->getMessage();
+    }
+
+    $_SESSION['login'] = $newLogin;
+
+    header("Location:../pages/index.php");
+}

@@ -1,0 +1,92 @@
+<?php
+include('inc/header.php');
+
+class ProfileWindow
+{
+
+
+    /*
+     * Initialise l'écran
+     */
+    public function __construct(User $_user)
+    {
+
+        echo '
+    <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Profil</title>
+        <link href="https://fonts.googleapis.com/css?family=Oswald|Ubuntu&display=swap" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="../public/css/theme.css"/>
+        <script src="https://kit.fontawesome.com/f59e24d178.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+          
+            <p>Nom : '. $_user->login() . '</p>
+            <!-- <p>Mot de passe :  '. $_user->mdp(). '</p> -->
+            <p>Fonction : ' . $_user->type_utilisateur(). ' </p>
+            
+            
+
+    </body>
+    </html>';
+
+        $this->Validate($_user);
+    }
+
+
+    /**
+     * L'utilisateur valide la modification du profil
+     * @param User $_user
+     */
+    public function Validate(User $_user){
+
+        echo ' <html>
+ <body>
+ <br/><br/><h4>Modifier le profil</h4>
+ <br/>
+ <form method="post">
+        <div>
+            <label for="newLogin">Changer votre login : </label>
+            <input type="text" name="newLogin"/>
+       	</div>
+       	<div>     
+            <label for="newPassword">Changer de mot de passe : </label>
+            <input type="password" name="newPassword"/>
+        </div>
+        
+            <input name="validation" type="button" value="Valider" />
+            <input name="annulation" type="button" value="Annuler" onclick=" history.go(-1)" />  <!--$this->Cancel()-->
+        </form>  
+</body>
+</html>' ;
+
+
+
+       /* if($_POST['newPassword'] != null ){
+            $_newPassword = $_POST['newPassword'];
+            $_user->setPassword($_newPassword);
+            echo ' Votre mot de passe a été changé.';
+        }
+        if ($_POST['newLogin'] != null ) {
+            $_newLogin = $_POST['newLogin'];
+            $_user->setLogin($_newLogin);
+            echo 'Votre login a été changé.';
+        } */
+        //this.close();
+
+    }
+
+    /**
+     *
+    L'utilisateur annule la modification du profil (ferme juste la fenêtre)
+     */
+    public function Cancel(){
+        //directement dans le bouton pour plus de facilitée
+    }
+
+
+}
+
+include('inc/footer.php');

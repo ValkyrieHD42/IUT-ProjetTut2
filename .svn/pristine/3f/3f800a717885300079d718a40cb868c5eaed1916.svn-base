@@ -1,0 +1,46 @@
+<?php
+
+
+class BadPasswordError
+{
+
+    private $_db;
+
+    /**
+     * BadPasswordError constructor.
+     * @param $db
+     */
+    public function __construct($db) {
+        $this->_db = $db;
+    }
+
+    /**
+     * @param $login
+     * @param $psw
+     */
+    public function checkPassword($login, $psw){
+
+
+        $req1 = $this->_db->query('Select password from utilsateur 
+                                    where login = " '. $login .' "');
+
+        $realpsw = $req1->fetch();
+
+        if ($realpsw != $psw)
+        {
+            echo "Mauvais mot de passe !! ";
+            $res = false;
+        }
+        else
+        {
+            $res = true;
+        }
+
+        return $res;
+
+
+
+
+
+    }
+}
