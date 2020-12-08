@@ -9,5 +9,6 @@ Fonctionnalités :
     - Modification du statut
     - Affectation de tache
     - Affectation de materiel
+ - Sauvegarde des données sécurisé dans une BDD
 
 D'autres fonctionnalités restent à implémenter
